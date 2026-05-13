@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>拼车出行</title>
+    <style>
+      :root {
+        --bg: #f4f7fb;
+        --card: #ffffff;
+        --primary: #2563eb;
+        --text: #0f172a;
+        --muted: #475569;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+        background: linear-gradient(120deg, #e0ecff, #f8fbff);
+        color: var(--text);
+      }
+      .container {
+        max-width: 960px;
+        margin: 32px auto;
+        padding: 0 16px;
+      }
+      .card {
+        background: var(--card);
+        border-radius: 18px;
+        box-shadow: 0 12px 30px rgba(37, 99, 235, 0.12);
+        padding: 24px;
+      }
+      h1 { margin-top: 0; font-size: 30px; }
+      p { color: var(--muted); }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 12px;
+      }
+      label { font-size: 14px; font-weight: 600; display: block; margin-bottom: 6px; }
+      input, select, button {
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid #cbd5e1;
+        padding: 10px 12px;
+        font-size: 14px;
+      }
+      button {
+        border: none;
+        background: var(--primary);
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform .15s ease, opacity .2s ease;
+      }
+      button:hover { transform: translateY(-1px); opacity: .95; }
+      .btn-alt { background: #0ea5e9; }
+      .actions {
+        margin-top: 14px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 10px;
+      }
+      .results { margin-top: 20px; display: grid; gap: 12px; }
+      .ride {
+        border: 1px solid #dbeafe;
+        border-radius: 12px;
+        padding: 14px;
+        background: #f8fbff;
+      }
+      .ride strong { color: #1d4ed8; }
+      .muted { color: var(--muted); font-size: 13px; }
+      .empty {
+        padding: 16px;
+        border: 1px dashed #93c5fd;
+        border-radius: 12px;
+        background: #eff6ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1>拼车出行平台</h1>
+        <p>选择出发地和目的地后搜索可用拼车，或直接在下方快速选择热门路线。</p>
+
+        <div class="grid">
+          <div>
+            <label for="from">出发地</label>
+            <input id="from" placeholder="例如：北京" />
+          </div>
+          <div>
+            <label for="to">目的地</label>
+            <input id="to" placeholder="例如：天津" />
+          </div>
+          <div>
+            <label for="date">出发日期</label>
+            <input id="date" type="date" />
+          </div>
+          <div>
+            <label for="seats">人数</label>
+            <select id="seats">
+              <option value="1">1 人</option>
+              <option value="2">2 人</option>
+              <option value="3">3 人</option>
+              <option value="4">4 人</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="searchBtn">搜索拼车</button>
+          <button id="directBtn" class="btn-alt">直接匹配最近路线</button>
+        </div>
+
+        <h3>热门路线一键选择</h3>
+        <div class="actions" id="quickRoutes"></div>
+
+        <div class="results" id="results"></div>
+      </div>
+    </div>
+
+    <script>
+      const rides = [
+        { from: '北京', to: '天津', time: '08:30', price: 55, driver: '张师傅', seats: 3 },
+        { from: '上海', to: '苏州', time: '09:10', price: 38, driver: '李师傅', seats: 2 },
+        { from: '广州', to: '深圳', time: '07:45', price: 42, driver: '陈师傅', seats: 4 },
+        { from: '杭州', to: '宁波', time: '10:20', price: 48, driver: '王师傅', seats: 3 },
+        { from: '成都', to: '重庆', time: '11:00', price: 60, driver: '刘师傅', seats: 2 }
+      ];
+
+      const quickRoutes = [
+        ['北京', '天津'],
+        ['上海', '苏州'],
+        ['广州', '深圳'],
+        ['杭州', '宁波'],
+        ['成都', '重庆']
+      ];
+
+      const fromEl = document.getElementById('from');
+      const toEl = document.getElementById('to');
+      const dateEl = document.getElementById('date');
+      const seatsEl = document.getElementById('seats');
+      const resultsEl = document.getElementById('results');
+
+      function renderResults(list, title = '搜索结果') {
+        if (!list.length) {
+          resultsEl.innerHTML = `<div class="empty">${title}：未找到匹配拼车，请尝试更换路线或使用直接匹配。</div>`;
+          return;
+        }
+
+        resultsEl.innerHTML = `<h3>${title}</h3>` + list.map((ride) => `
+          <div class="ride">
+            <strong>${ride.from} → ${ride.to}</strong>
+            <div>发车时间：${ride.time} ｜ 司机：${ride.driver}</div>
+            <div>价格：￥${ride.price} / 人 ｜ 剩余座位：${ride.seats}</div>
+            <div class="muted">建议上车前与司机电话确认，保障行程安全。</div>
+          </div>
+        `).join('');
+      }
+
+      function searchRides() {
+        const from = fromEl.value.trim();
+        const to = toEl.value.trim();
+        const seats = Number(seatsEl.value);
+        if (!from || !to) {
+          renderResults([], '请先填写出发地和目的地');
+          return;
+        }
+        const matched = rides.filter(r => r.from === from && r.to === to && r.seats >= seats);
+        const dateText = dateEl.value ? `（${dateEl.value}）` : '';
+        renderResults(matched, `为你找到 ${from} → ${to}${dateText} 的拼车`);
+      }
+
+      function directMatch() {
+        const seats = Number(seatsEl.value);
+        const available = rides.filter(r => r.seats >= seats).sort((a,b) => a.price - b.price);
+        renderResults(available.slice(0, 3), '直接匹配：为你推荐最近最划算的路线');
+      }
+
+      document.getElementById('searchBtn').addEventListener('click', searchRides);
+      document.getElementById('directBtn').addEventListener('click', directMatch);
+
+      const quickWrap = document.getElementById('quickRoutes');
+      quickRoutes.forEach(([from, to]) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'btn-alt';
+        btn.textContent = `${from} → ${to}`;
+        btn.addEventListener('click', () => {
+          fromEl.value = from;
+          toEl.value = to;
+          searchRides();
+        });
+        quickWrap.appendChild(btn);
+      });
+
+      directMatch();
+    </script>
+  </body>
+</html>
