@@ -1,0 +1,63 @@
+.admin-page {
+  padding-top: calc(env(safe-area-inset-top) + 100rpx);
+}
+
+.admin-card,
+.request-card {
+  padding: 28rpx;
+}
+
+.request-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  margin-top: 20rpx;
+}
+
+.request-top,
+.request-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.request-name {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #30452d;
+}
+
+.request-line {
+  margin-top: 12rpx;
+  color: #6f7f69;
+  line-height: 1.7;
+}
+
+.card-image {
+  width: 100%;
+  height: 320rpx;
+  border-radius: 24rpx;
+  margin-top: 18rpx;
+  background: #eef3e8;
+}
+
+.request-actions {
+  margin-top: 20rpx;
+}
+
+.action-btn {
+  flex: 1;
+  box-shadow: 0 8rpx 14rpx rgba(129, 156, 102, 0.1);
+}
+
+.action-btn:active {
+  transform: translateY(1rpx);
+  box-shadow: 0 4rpx 8rpx rgba(129, 156, 102, 0.08);
+}
+
+.field-tip {
+  margin-top: 10rpx;
+  color: #7b8776;
+  line-height: 1.7;
+}

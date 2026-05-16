@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="simple-topbar">
+    <view class="back-chip" bindtap="goBack">‹ 返回</view>
+  </view>
+
+  <view class="card intro-card">
+    <view class="section-title">校园工具箱</view>
+    <view class="section-subtitle">这里已经预留了校园信息模块，后续你只需要替换 config/index.js 里的内容即可。</view>
+  </view>
+
+  <view class="tool-list">
+    <view wx:for="{{toolboxCards}}" wx:key="id" class="tool-card card" data-index="{{index}}" bindtap="openTool">
+      <view class="tool-title">{{item.title}}</view>
+      <view class="tool-desc">{{item.desc}}</view>
+      <view class="tool-action">点击查看说明 ›</view>
+    </view>
+  </view>
+</view>

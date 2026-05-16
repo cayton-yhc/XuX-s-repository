@@ -1,0 +1,101 @@
+.message-page {
+  padding-top: calc(env(safe-area-inset-top) + 86rpx);
+  background: radial-gradient(circle at 88% 8%, rgba(250, 226, 169, 0.2) 0%, transparent 26%),
+    radial-gradient(circle at 10% 14%, rgba(194, 227, 188, 0.22) 0%, transparent 30%);
+}
+
+.message-summary {
+  padding: 26rpx;
+  margin-bottom: 16rpx;
+  background: linear-gradient(135deg, rgba(249, 231, 166, 0.24) 0%, rgba(223, 241, 201, 0.38) 100%);
+  border: 2rpx solid rgba(226, 236, 214, 0.9);
+}
+
+.conversation-list {
+  margin-top: 8rpx;
+}
+
+.conversation-card {
+  display: flex;
+  align-items: center;
+  padding: 22rpx;
+  margin-top: 18rpx;
+  border: 2rpx solid rgba(230, 238, 221, 0.9);
+}
+
+.conv-avatar {
+  width: 88rpx;
+  height: 88rpx;
+  flex-shrink: 0;
+}
+
+.conv-main {
+  flex: 1;
+  min-width: 0;
+  margin-left: 18rpx;
+}
+
+.conv-top {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.conv-name {
+  flex: 1;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #31422f;
+}
+
+.conv-time {
+  font-size: 22rpx;
+  color: #9aa493;
+}
+
+.conv-preview {
+  margin-top: 10rpx;
+  color: #6b7764;
+}
+
+.goods-mini-row {
+  margin-top: 16rpx;
+  display: flex;
+  align-items: center;
+  padding: 12rpx;
+  border-radius: 18rpx;
+  background: #fafcf7;
+}
+
+.goods-mini-cover {
+  width: 74rpx;
+  height: 74rpx;
+  border-radius: 16rpx;
+  background: #eef3e8;
+  flex-shrink: 0;
+}
+
+.goods-mini-info {
+  flex: 1;
+  min-width: 0;
+  margin-left: 14rpx;
+  font-size: 24rpx;
+}
+
+.unread-badge {
+  min-width: 40rpx;
+  height: 40rpx;
+  padding: 0 10rpx;
+  border-radius: 999rpx;
+  background: #f59657;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22rpx;
+  margin-left: 14rpx;
+}
+
+.message-login-btn {
+  margin-top: 28rpx;
+}

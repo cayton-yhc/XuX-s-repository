@@ -1,0 +1,118 @@
+.profile-page {
+  padding-top: calc(env(safe-area-inset-top) + 100rpx);
+  background: radial-gradient(circle at 8% 6%, rgba(246, 224, 164, 0.22) 0%, transparent 30%),
+    radial-gradient(circle at 92% 18%, rgba(208, 234, 196, 0.22) 0%, transparent 28%);
+}
+
+.account-card {
+  padding: 34rpx 30rpx;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(249, 231, 164, 0.9) 0%, rgba(221, 241, 198, 0.97) 55%, rgba(205, 234, 196, 0.97) 100%);
+}
+
+.account-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: #eef3e8;
+  flex-shrink: 0;
+}
+
+.account-main {
+  flex: 1;
+  margin-left: 20rpx;
+}
+
+.account-name {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #324430;
+}
+
+.account-signature {
+  margin-top: 12rpx;
+  line-height: 1.8;
+  color: #597053;
+}
+
+.account-action {
+  margin-top: 12rpx;
+  display: inline-flex;
+  padding: 8rpx 18rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.58);
+  color: #3f6339;
+  font-size: 23rpx;
+  font-weight: 700;
+}
+
+.account-arrow {
+  margin-left: 18rpx;
+  font-size: 44rpx;
+  color: #6b7e64;
+}
+
+.info-row {
+  display: flex;
+  gap: 18rpx;
+  margin-top: 22rpx;
+}
+
+.info-card {
+  flex: 1;
+  padding: 30rpx 20rpx;
+  text-align: center;
+  border: 2rpx solid rgba(226, 236, 215, 0.9);
+}
+
+.info-value {
+  font-size: 42rpx;
+  font-weight: 700;
+  color: #314530;
+}
+
+.info-value.small {
+  font-size: 32rpx;
+}
+
+.info-label {
+  margin-top: 10rpx;
+  color: #7b8775;
+}
+
+.menu-card {
+  margin-top: 22rpx;
+  padding: 0 24rpx;
+  border: 2rpx solid rgba(233, 241, 223, 0.88);
+}
+
+.menu-item {
+  padding: 28rpx 0;
+  border-bottom: 2rpx solid #f0f3eb;
+  display: flex;
+  align-items: center;
+}
+
+.menu-item.last {
+  border-bottom: none;
+}
+
+.menu-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #30412f;
+}
+
+.menu-desc {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #7b8775;
+  line-height: 1.7;
+}
+
+.menu-arrow {
+  margin-left: auto;
+  font-size: 40rpx;
+  color: #9da69a;
+}

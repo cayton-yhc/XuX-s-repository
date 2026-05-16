@@ -1,0 +1,76 @@
+<view class="container with-tabbar publish-page">
+  <view wx:if="{{loginChecked && !canPublish}}" class="card login-gate">
+    <view class="section-title">先登录再发布</view>
+    <view class="section-subtitle">完善昵称并保存后，就可以上传图片、使用 AI 识别并发布校园闲置。</view>
+    <button class="primary-btn gate-btn" bindtap="goLoginPage">去登录</button>
+  </view>
+
+  <view wx:if="{{canPublish}}" class="card publish-card">
+    <view class="section-title">发布一件闲置</view>
+    <view class="section-subtitle">不做站内交易，只帮助同学们更轻松地展示物品、私信沟通和线下面交。</view>
+
+    <view class="block">
+      <view class="label">1. 上传商品图片</view>
+      <view class="sub-label">支持拍照或从相册选择，最多 3 张；系统会结合前 2 张图自动识别分类和标签</view>
+      <view class="image-list">
+        <view wx:for="{{imagePreviews}}" wx:key="*this" class="image-item">
+          <image class="preview" src="{{item}}" mode="aspectFill" />
+          <view class="remove" data-index="{{index}}" bindtap="removeImage">×</view>
+        </view>
+        <view wx:if="{{form.images.length < 3}}" class="upload-entry" bindtap="chooseImages">
+          <text class="upload-plus">＋</text>
+          <text class="upload-text">添加图片</text>
+        </view>
+      </view>
+      <view class="ai-tip">{{recognizing ? 'AI 正在识别中…' : aiTip}}</view>
+    </view>
+
+    <view class="block">
+      <view class="label">2. 商品名称</view>
+      <input class="input-box" placeholder="例如：高数教材 / 考研资料 / 无线鼠标" placeholder-class="input-placeholder" value="{{form.title}}" bindinput="onTitleInput" />
+    </view>
+
+    <view class="block">
+      <view class="label">3. 商品分类</view>
+      <view class="tag-wrap">
+        <view
+          wx:for="{{categories}}"
+          wx:key="*this"
+          class="tag-chip {{form.category === item ? 'active' : ''}}"
+          data-category="{{item}}"
+          bindtap="onSelectCategory"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+
+    <view class="block">
+      <view class="label">{{tagTitle}}</view>
+      <view class="sub-label">{{tagHint}}</view>
+      <view class="tag-wrap">
+        <view
+          wx:for="{{tagOptions}}"
+          wx:key="*this"
+          class="tag-chip {{selectedTagsMap[item] ? 'active' : ''}}"
+          data-tag="{{item}}"
+          bindtap="onToggleTag"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+
+    <view class="block">
+      <view class="label">5. 发布说明</view>
+      <textarea class="textarea-box" placeholder="补充商品成色、购买时间、转手原因、面交时间等" placeholder-class="input-placeholder" value="{{form.description}}" bindinput="onDescriptionInput" maxlength="300" />
+    </view>
+
+    <view class="block">
+      <view class="label">6. 期望价格</view>
+      <input class="input-box" type="digit" placeholder="例如：35" placeholder-class="input-placeholder" value="{{form.price}}" bindinput="onPriceInput" />
+    </view>
+
+    <button class="primary-btn submit-btn" loading="{{submitting}}" bindtap="submitGoods">确认发布</button>
+  </view>
+</view>

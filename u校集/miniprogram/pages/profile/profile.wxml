@@ -1,0 +1,40 @@
+<view class="container with-tabbar profile-page">
+  <view class="card account-card" bindtap="goLoginPage">
+    <image class="account-avatar" src="{{profile.avatarUrl || defaultAvatar}}" mode="aspectFill" />
+    <view class="account-main">
+      <view class="account-name line-1">{{profile.nickName || '还没设置昵称'}}</view>
+      <view class="account-signature line-2">{{profile.signature || '把喜欢的物品流转给新主人，也是一种温柔。'}}</view>
+      <view class="account-action">{{loggedIn ? '编辑资料' : '去登录'}}</view>
+    </view>
+    <view class="account-arrow">›</view>
+  </view>
+
+  <view class="info-row">
+    <view class="card info-card" bindtap="goMyProducts">
+      <view class="info-value">{{stats.myGoodsCount}}</view>
+      <view class="info-label">我的发布</view>
+    </view>
+    <view class="card info-card" bindtap="goSchoolVerify">
+      <view class="info-value small">{{profile.schoolVerified ? '已认证' : (profile.schoolVerifyStatus === 'pending' ? '待审核' : '未认证')}}</view>
+      <view class="info-label">学校认证</view>
+    </view>
+  </view>
+
+  <view class="card menu-card">
+    <view wx:if="{{isAdmin}}" class="menu-item" bindtap="goAdminReview">
+      <view>
+        <view class="menu-title">认证审核（管理员）</view>
+        <view class="menu-desc">管理员查看并通过 / 驳回学校认证申请</view>
+      </view>
+      <view class="menu-arrow">›</view>
+    </view>
+
+    <view class="menu-item last" bindtap="goToolbox">
+      <view>
+        <view class="menu-title">工具箱</view>
+        <view class="menu-desc">查看校园公告、校历、报修、快递点等预留信息入口</view>
+      </view>
+      <view class="menu-arrow">›</view>
+    </view>
+  </view>
+</view>

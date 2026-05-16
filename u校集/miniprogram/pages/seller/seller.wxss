@@ -1,0 +1,90 @@
+.seller-page {
+  padding-top: calc(env(safe-area-inset-top) + 100rpx);
+}
+
+.seller-card {
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.seller-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: #eef3e8;
+}
+
+.seller-main {
+  flex: 1;
+  margin-left: 24rpx;
+}
+
+.seller-name {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #30452d;
+}
+
+.seller-signature,
+.seller-status {
+  margin-top: 10rpx;
+  color: #71816b;
+  line-height: 1.7;
+}
+
+.section-block {
+  margin: 28rpx 0 18rpx;
+}
+
+.goods-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.goods-card {
+  padding: 22rpx;
+  display: flex;
+}
+
+.goods-cover {
+  width: 188rpx;
+  height: 188rpx;
+  border-radius: 24rpx;
+  background: #eef3e8;
+}
+
+.goods-main {
+  flex: 1;
+  margin-left: 22rpx;
+}
+
+.goods-top,
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12rpx;
+}
+
+.goods-title {
+  max-width: 320rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.mini-tag {
+  display: inline-flex;
+  padding: 8rpx 18rpx;
+  border-radius: 999rpx;
+  background: #f4f6ed;
+  color: #78866f;
+  margin-right: 10rpx;
+  margin-top: 10rpx;
+  font-size: 22rpx;
+}
+
+.mini-tag.soft {
+  background: #edf5e8;
+}

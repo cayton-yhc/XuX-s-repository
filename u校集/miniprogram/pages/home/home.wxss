@@ -1,0 +1,158 @@
+.home-page {
+  padding-top: calc(env(safe-area-inset-top) + 100rpx);
+  background: radial-gradient(circle at 10% 5%, rgba(255, 245, 196, 0.32) 0%, transparent 34%),
+    radial-gradient(circle at 90% 12%, rgba(204, 234, 194, 0.28) 0%, transparent 32%);
+}
+
+.hero-card {
+  padding: 34rpx 32rpx;
+  background: linear-gradient(135deg, rgba(249, 231, 164, 0.95) 0%, rgba(222, 241, 195, 0.98) 52%, rgba(205, 233, 196, 0.98) 100%);
+}
+
+.hero-title {
+  font-size: 42rpx;
+  font-weight: 700;
+  color: #314630;
+}
+
+.hero-subtitle {
+  margin-top: 12rpx;
+  line-height: 1.8;
+  color: #597053;
+}
+
+.search-box {
+  margin-top: 26rpx;
+  height: 92rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 0 28rpx;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  height: 92rpx;
+  line-height: 92rpx;
+  font-size: 28rpx;
+  color: #324231;
+}
+
+.clear-btn {
+  margin-left: 20rpx;
+  font-size: 24rpx;
+  color: #66805f;
+}
+
+.section-block {
+  margin-top: 32rpx;
+}
+
+.category-scroll {
+  margin-top: 18rpx;
+  white-space: nowrap;
+}
+
+.category-list {
+  display: inline-flex;
+  flex-wrap: nowrap;
+}
+
+.goods-list {
+  margin-top: 4rpx;
+}
+
+.refresh-hint {
+  margin-top: 8rpx;
+  font-size: 23rpx;
+  color: #7d9176;
+}
+
+.goods-card {
+  display: flex;
+  padding: 20rpx;
+  margin-top: 20rpx;
+  border: 2rpx solid rgba(229, 238, 219, 0.85);
+}
+
+.goods-cover {
+  width: 216rpx;
+  height: 216rpx;
+  border-radius: 24rpx;
+  background: #eef3e8;
+  flex-shrink: 0;
+}
+
+.goods-main {
+  flex: 1;
+  padding-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.goods-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16rpx;
+}
+
+.goods-title {
+  flex: 1;
+  font-size: 31rpx;
+  font-weight: 700;
+  color: #2f4030;
+  line-height: 1.55;
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 14rpx;
+}
+
+.mini-tag {
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  background: #fdf2ce;
+  color: #8b6b1f;
+  font-size: 22rpx;
+  margin-right: 12rpx;
+  margin-bottom: 10rpx;
+}
+
+.mini-tag.soft {
+  background: #eff7ea;
+  color: #62825d;
+}
+
+.location {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: #7a8772;
+}
+
+.owner-row {
+  display: flex;
+  align-items: center;
+  margin-top: 14rpx;
+}
+
+.avatar.small {
+  width: 52rpx;
+  height: 52rpx;
+}
+
+.owner-name {
+  flex: 1;
+  margin-left: 12rpx;
+  font-size: 24rpx;
+  color: #60715d;
+}
+
+.time-text {
+  font-size: 22rpx;
+  color: #95a190;
+}

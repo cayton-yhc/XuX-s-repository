@@ -1,0 +1,52 @@
+.verify-card {
+  padding: 28rpx;
+}
+
+.status-box {
+  margin-top: 22rpx;
+  padding: 18rpx 22rpx;
+  border-radius: 18rpx;
+  background: #f7faf3;
+  color: #61705f;
+}
+
+.status-box.pending {
+  background: #fff3df;
+  color: #b87718;
+}
+
+.field-block {
+  margin-top: 24rpx;
+}
+
+.field-label {
+  margin-bottom: 12rpx;
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #314530;
+}
+
+.card-box {
+  width: 100%;
+  height: 260rpx;
+  border-radius: 24rpx;
+  overflow: hidden;
+  background: #fbfcf8;
+  border: 2rpx dashed #d8e6d3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+}
+
+.card-placeholder {
+  color: #778272;
+}
+
+.submit-btn {
+  margin-top: 32rpx;
+}

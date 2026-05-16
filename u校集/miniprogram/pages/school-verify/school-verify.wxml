@@ -1,0 +1,49 @@
+<view class="container">
+  <view class="simple-topbar">
+    <view class="back-chip" bindtap="goBack">‹ 返回</view>
+  </view>
+
+  <view class="card verify-card">
+    <view class="section-title">学校认证（预留功能）</view>
+    <view class="section-subtitle">当前已支持提交认证资料到云数据库，后续你可以接入管理员审核流程。</view>
+
+    <view class="status-box {{currentStatus === 'pending' ? 'pending' : ''}}">
+      当前状态：{{currentStatus === 'approved' ? '已认证' : (currentStatus === 'pending' ? '待审核' : (currentStatus === 'rejected' ? '已驳回' : '未提交'))}}
+    </view>
+
+    <view class="field-block">
+      <view class="field-label">真实姓名</view>
+      <input class="input-box" data-field="realName" placeholder="例如：张三" placeholder-class="input-placeholder" value="{{form.realName}}" bindinput="onInput" />
+    </view>
+
+    <view class="field-block">
+      <view class="field-label">学号</view>
+      <input class="input-box" data-field="studentNo" placeholder="请输入学号" placeholder-class="input-placeholder" value="{{form.studentNo}}" bindinput="onInput" />
+    </view>
+
+    <view class="field-block">
+      <view class="field-label">学院</view>
+      <input class="input-box" data-field="college" placeholder="例如：计算机学院" placeholder-class="input-placeholder" value="{{form.college}}" bindinput="onInput" />
+    </view>
+
+    <view class="field-block">
+      <view class="field-label">专业（选填）</view>
+      <input class="input-box" data-field="major" placeholder="例如：软件工程" placeholder-class="input-placeholder" value="{{form.major}}" bindinput="onInput" />
+    </view>
+
+    <view class="field-block">
+      <view class="field-label">补充备注（选填）</view>
+      <textarea class="textarea-box" data-field="remark" placeholder="例如：2026 级 / 研一 / 方便核验的信息" placeholder-class="input-placeholder" value="{{form.remark}}" bindinput="onInput" />
+    </view>
+
+    <view class="field-block">
+      <view class="field-label">学生证 / 校园卡图片（选填但建议上传）</view>
+      <view class="card-box" bindtap="chooseCardImage">
+        <image wx:if="{{form.cardImage}}" class="card-image" src="{{form.cardImage}}" mode="aspectFill" />
+        <view wx:else class="card-placeholder">点击上传图片</view>
+      </view>
+    </view>
+
+    <button class="primary-btn submit-btn" loading="{{submitting}}" bindtap="submitVerify">提交认证资料</button>
+  </view>
+</view>

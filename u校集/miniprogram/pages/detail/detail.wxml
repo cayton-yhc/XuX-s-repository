@@ -1,0 +1,47 @@
+<view class="detail-page" wx:if="{{goods}}">
+  <view class="detail-topbar">
+    <view class="back-chip light" bindtap="goBack">‹ 返回</view>
+  </view>
+
+  <swiper class="banner" indicator-dots="{{goods.images.length > 1}}" autoplay="{{goods.images.length > 1}}" interval="3000" circular>
+    <swiper-item wx:for="{{goods.images}}" wx:key="*this">
+      <image class="banner-image" src="{{item}}" mode="aspectFill" data-src="{{item}}" data-index="{{index}}" bindtap="previewImage" binderror="onBannerImageError" />
+    </swiper-item>
+  </swiper>
+
+  <view class="container detail-container">
+    <view class="card info-card">
+      <view class="title-row">
+        <view class="detail-title line-2">{{goods.title}}</view>
+        <view class="price-text">￥{{goods.price}}</view>
+      </view>
+      <view class="tag-row">
+        <view class="mini-tag">{{goods.category}}</view>
+        <view wx:for="{{goods.tags}}" wx:key="*this" class="mini-tag soft">{{item}}</view>
+      </view>
+      <view class="detail-meta">发布时间：{{goods.createdTime}}</view>
+    </view>
+
+    <view class="card desc-card">
+      <view class="section-title">商品描述</view>
+      <view class="desc-text">{{goods.description || '卖家还没有补充描述～'}}</view>
+    </view>
+
+    <view class="card seller-card" bindtap="goSellerProfile">
+      <view class="section-title">卖家信息</view>
+      <view class="seller-row">
+        <image class="avatar seller-avatar" src="{{goods.ownerAvatarUrl || defaultAvatar}}" mode="aspectFill" binderror="onAvatarError" />
+        <view class="seller-main">
+          <view class="seller-name">{{goods.ownerNickName || '热心同学'}}</view>
+          <view class="muted line-1">点击进入卖家主页</view>
+        </view>
+        <view class="seller-arrow">›</view>
+      </view>
+    </view>
+
+    <button wx:if="{{!isOwner}}" class="primary-btn contact-btn {{!canContact ? 'disabled-contact' : ''}}" bindtap="contactSeller" disabled="{{!canContact}}">
+      {{canContact ? '私信联系卖家' : '商品暂不可私信'}}
+    </button>
+    <button wx:else class="ghost-btn contact-btn">这是我发布的商品</button>
+  </view>
+</view>

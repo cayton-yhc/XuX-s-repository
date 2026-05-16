@@ -1,0 +1,45 @@
+<view class="container seller-page">
+  <view class="simple-topbar">
+    <view class="back-chip" bindtap="goBack">‹ 返回</view>
+  </view>
+
+  <view class="card seller-card">
+    <image
+      class="seller-avatar"
+      src="{{profile.avatarUrl || defaultAvatar}}"
+      mode="aspectFill"
+      binderror="onSellerAvatarError"
+    />
+    <view class="seller-main">
+      <view class="seller-name">{{profile.nickName || '热心同学'}}</view>
+      <view class="seller-signature">{{profile.signature || '这个同学还没有留下个性签名。'}}</view>
+      <view class="seller-status">{{profile.schoolVerified ? '已完成学校认证' : '暂未完成学校认证'}}</view>
+    </view>
+  </view>
+
+  <view class="section-block">
+    <view class="section-title">TA 的在售闲置</view>
+    <view class="section-subtitle">参考闲鱼主页的查看方式，展示卖家当前公开可见的商品。</view>
+  </view>
+
+  <view wx:if="{{goodsList.length}}" class="goods-list">
+    <view wx:for="{{goodsList}}" wx:key="_id" class="goods-card card" data-id="{{item._id}}" bindtap="goDetail">
+      <image class="goods-cover" src="{{item.cover}}" mode="aspectFill" />
+      <view class="goods-main">
+        <view class="goods-top">
+          <view class="goods-title line-2">{{item.title}}</view>
+          <view class="price-text">￥{{item.price}}</view>
+        </view>
+        <view class="meta-row">
+          <view class="mini-tag">{{item.category}}</view>
+          <view wx:for="{{item.tags}}" wx:key="*this" class="mini-tag soft">{{item}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="empty-wrap card">
+    <view class="empty-title">这个卖家暂时没有在售商品</view>
+    <view class="empty-desc">等对方重新发布后，会在这里显示。</view>
+  </view>
+</view>

@@ -1,0 +1,19 @@
+<view class="tabbar-wrap">
+  <view class="tabbar-panel">
+    <view
+      wx:for="{{tabs}}"
+      wx:key="pagePath"
+      class="tab-item {{selected === item.pagePath ? 'active' : ''}}"
+      data-path="{{item.pagePath}}"
+      bindtap="switchTab"
+    >
+      <view class="tab-icon-wrap">
+        <image class="tab-icon" src="{{selected === item.pagePath ? item.selectedIconPath : item.iconPath}}" mode="aspectFit" />
+        <view wx:if="{{item.pagePath === '/pages/message/message' && unreadCount > 0}}" class="tab-badge">
+          {{unreadCount > 99 ? '99+' : unreadCount}}
+        </view>
+      </view>
+      <text class="tab-text">{{item.text}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,39 @@
+<view class="container">
+  <view class="simple-topbar">
+    <view class="back-chip" bindtap="goBack">‹ 返回</view>
+  </view>
+
+  <view class="card page-card">
+    <view class="section-title">我发布的商品</view>
+    <view class="section-subtitle">这里展示你的全部发布记录，方便你管理在售状态，也支持直接删除商品。</view>
+  </view>
+
+  <view wx:if="{{list.length}}" class="goods-list">
+    <view wx:for="{{list}}" wx:key="_id" class="goods-card card">
+      <image class="goods-cover" src="{{item.cover}}" mode="aspectFill" bindtap="goDetail" data-id="{{item._id}}" />
+      <view class="goods-main">
+        <view class="goods-title line-2" bindtap="goDetail" data-id="{{item._id}}">{{item.title}}</view>
+        <view class="goods-price">￥{{item.price}}</view>
+        <view class="goods-meta">{{item.category}} · {{item.timeText}}</view>
+        <view class="goods-actions">
+          <view class="status-row">
+            <view class="status-badge {{item.status === 'on' ? 'status-on' : (item.status === 'sold' ? 'status-sold' : 'status-off')}}">
+              {{item.status === 'on' ? '在售中' : (item.status === 'sold' ? '已售出' : '已下架')}}
+            </view>
+          </view>
+            <view class="action-row">
+              <button class="action-btn secondary-btn" data-id="{{item._id}}" data-status="{{item.status}}" bindtap="toggleStatus">
+                {{item.status === 'on' ? '已售' : '上架'}}
+              </button>
+              <button class="action-btn delete-btn" data-id="{{item._id}}" bindtap="deleteGoods">删除</button>
+            </view>
+          </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="empty-wrap card">
+    <view class="empty-title">你还没有发布商品</view>
+    <view class="empty-desc">去底部中间的发布按钮试试，发布第一件闲置吧。</view>
+  </view>
+</view>

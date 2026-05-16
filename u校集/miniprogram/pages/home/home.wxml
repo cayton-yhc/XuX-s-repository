@@ -1,0 +1,71 @@
+<view class="container with-tabbar home-page">
+  <view class="card hero-card">
+    <view class="hero-title">你好，{{greetingName}}</view>
+    <view class="hero-subtitle">欢迎来到校内闲置角，让每件物品都在校园里继续发光。</view>
+
+    <view class="search-box">
+      <input
+        class="search-input"
+        placeholder="搜索商品名称 / 标签 / 分类"
+        placeholder-class="input-placeholder"
+        value="{{keyword}}"
+        bindinput="onSearchInput"
+        confirm-type="search"
+      />
+      <text wx:if="{{keyword}}" class="clear-btn" bindtap="clearSearch">清空</text>
+    </view>
+  </view>
+
+  <view class="section-block">
+    <view class="section-title">分类筛选</view>
+    <view class="section-subtitle">点击标签，快速筛选你想看的商品类别</view>
+  </view>
+
+  <scroll-view class="category-scroll" scroll-x enable-flex>
+    <view class="category-list">
+      <view
+        wx:for="{{categories}}"
+        wx:key="*this"
+        class="tag-chip {{activeCategory === item ? 'active' : ''}}"
+        data-category="{{item}}"
+        bindtap="onSelectCategory"
+      >
+        {{item}}
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="section-block goods-head">
+    <view class="section-title">最新闲置</view>
+    <view class="section-subtitle">{{goodsList.length}} 件校园闲置正在展示中</view>
+    <view class="refresh-hint">{{refreshTip}}</view>
+  </view>
+
+  <view wx:if="{{goodsList.length}}" class="goods-list">
+    <view wx:for="{{goodsList}}" wx:key="_id" class="goods-card card" data-id="{{item._id}}" bindtap="goDetail">
+      <image class="goods-cover" src="{{item.cover}}" mode="aspectFill" />
+      <view class="goods-main">
+        <view class="goods-top">
+          <view class="goods-title line-2">{{item.title}}</view>
+          <view class="price-text">￥{{item.price}}</view>
+        </view>
+
+        <view class="meta-row">
+          <view class="mini-tag">{{item.category}}</view>
+          <view wx:for="{{item.tags}}" wx:key="*this" class="mini-tag soft">{{item}}</view>
+        </view>
+
+        <view class="owner-row">
+          <image class="avatar small" src="{{item.ownerAvatarUrl}}" mode="aspectFill" />
+          <view class="owner-name line-1">{{item.ownerNickName || '热心同学'}}</view>
+          <view class="time-text">{{item.timeText}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="empty-wrap card">
+    <view class="empty-title">暂时没有匹配的商品</view>
+    <view class="empty-desc">换个关键词试试，或者点击底部“发布”按钮，成为第一位上架的同学。</view>
+  </view>
+</view>

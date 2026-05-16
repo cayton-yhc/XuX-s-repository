@@ -1,0 +1,57 @@
+<view class="chat-page" wx:if="{{conversation}}">
+  <view class="chat-inner">
+    <view class="simple-topbar">
+      <view class="back-chip" bindtap="goBack">‹ 返回</view>
+    </view>
+
+    <view class="chat-head card">
+      <view class="user-row">
+        <image class="avatar head-avatar" src="{{(otherUser && otherUser.avatarUrl) || defaultAvatar}}" mode="aspectFill" binderror="onOtherAvatarError" />
+        <view class="user-main">
+          <view class="user-name">{{(otherUser && otherUser.nickName) || '热心同学'}}</view>
+          <view class="user-tip">先聊清楚成色、时间、地点，再决定是否线下加好友</view>
+        </view>
+      </view>
+
+      <view class="goods-card" bindtap="openGoodsDetail">
+        <image class="goods-cover" src="{{(goodsSnapshot && goodsSnapshot.cover) || defaultGoodsCover}}" mode="aspectFill" />
+        <view class="goods-info">
+          <view class="line-1">{{goodsSnapshot.title}}</view>
+          <view class="muted line-1">￥{{goodsSnapshot.price}} · {{goodsSnapshot.category}}</view>
+        </view>
+      </view>
+
+      <view class="quick-actions">
+        <button class="ghost-btn quick-btn" bindtap="sendMyWechatNumber">发送我的微信号</button>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view
+    class="message-scroll"
+    scroll-y
+    scroll-into-view="{{scrollIntoView}}"
+    scroll-with-animation="{{scrollWithAnimation}}"
+    lower-threshold="80"
+    bindscroll="onMessageScroll"
+    bindscrolltolower="onMessageScrollToLower"
+  >
+    <view class="message-list">
+      <view wx:for="{{messages}}" wx:key="_id" id="msg-{{item._id}}" class="message-row {{item.isMine ? 'mine' : ''}}">
+        <view class="bubble-wrap {{item.isMine ? 'mine' : ''}}">
+          <view class="bubble {{item.isMine ? 'mine' : ''}}" bindlongpress="copyMessage" data-content="{{item.content}}">
+            <text selectable>{{item.content}}</text>
+          </view>
+          <view class="copy-tip">长按可复制</view>
+          <view class="msg-time">{{item.timeText}}</view>
+        </view>
+      </view>
+      <view id="chat-bottom" class="chat-bottom-anchor"></view>
+    </view>
+  </scroll-view>
+
+  <view class="input-bar {{composerVisible ? 'show' : 'hide'}}">
+    <input class="chat-input" placeholder="输入你想说的话…" placeholder-class="input-placeholder" value="{{inputValue}}" bindinput="onInput" confirm-type="send" bindconfirm="onSend" />
+    <button class="send-btn" loading="{{sending}}" bindtap="onSend">发送</button>
+  </view>
+</view>

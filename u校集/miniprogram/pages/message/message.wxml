@@ -1,0 +1,38 @@
+<view class="container with-tabbar message-page">
+  <view class="message-summary card">
+    <view class="section-title">最近私信</view>
+    <view class="section-subtitle">先站内沟通商品情况、时间和地点，再决定是否线下加好友。</view>
+  </view>
+
+  <view wx:if="{{loginChecked && !canUseMessage}}" class="empty-wrap card">
+    <view class="empty-title">先登录再查看私信</view>
+    <view class="empty-desc">完善昵称并保存后，就可以查看会话和联系卖家。</view>
+    <button class="primary-btn message-login-btn" bindtap="goLoginPage">去登录</button>
+  </view>
+
+  <view wx:elif="{{conversations.length}}" class="conversation-list">
+    <view wx:for="{{conversations}}" wx:key="_id" class="conversation-card card" data-id="{{item._id}}" bindtap="openConversation">
+      <image class="avatar conv-avatar" src="{{item.otherAvatar}}" mode="aspectFill" />
+      <view class="conv-main">
+        <view class="conv-top">
+          <view class="conv-name line-1">{{item.otherUser.nickName || '热心同学'}}</view>
+          <view class="conv-time">{{item.displayTime}}</view>
+        </view>
+        <view class="conv-preview line-1">{{item.lastMessage || '快来开始第一句问候吧～'}}</view>
+        <view class="goods-mini-row">
+          <image class="goods-mini-cover" src="{{item.goodsCover}}" mode="aspectFill" />
+          <view class="goods-mini-info">
+            <view class="line-1">{{item.goodsSnapshot.title}}</view>
+            <view class="muted line-1">￥{{item.goodsSnapshot.price}} · {{item.goodsSnapshot.category}}</view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{item.unreadCount > 0}}" class="unread-badge">{{item.unreadCount}}</view>
+    </view>
+  </view>
+
+  <view wx:elif="{{canUseMessage}}" class="empty-wrap card">
+    <view class="empty-title">还没有私信会话</view>
+    <view class="empty-desc">在商品详情页点击“私信联系”，就能在这里看到聊天记录。</view>
+  </view>
+</view>

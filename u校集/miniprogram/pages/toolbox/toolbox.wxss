@@ -1,0 +1,30 @@
+.intro-card {
+  padding: 28rpx;
+}
+
+.tool-list {
+  margin-top: 18rpx;
+}
+
+.tool-card {
+  padding: 26rpx;
+  margin-top: 18rpx;
+}
+
+.tool-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #30412f;
+}
+
+.tool-desc {
+  margin-top: 14rpx;
+  line-height: 1.8;
+  color: #72816d;
+}
+
+.tool-action {
+  margin-top: 18rpx;
+  color: #5a8052;
+  font-weight: 600;
+}

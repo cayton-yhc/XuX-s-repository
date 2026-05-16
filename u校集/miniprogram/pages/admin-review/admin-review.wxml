@@ -1,0 +1,39 @@
+<view class="container admin-page">
+  <view class="simple-topbar">
+    <view class="back-chip" bindtap="goBack">‹ 返回</view>
+  </view>
+
+  <view class="card admin-card">
+    <view class="section-title">学校认证审核</view>
+    <view class="section-subtitle">管理员可以在这里查看待审核申请，并直接通过或驳回。</view>
+    <view class="field-tip">如果提示不是管理员，请先到“登录与资料”页复制 openid，并填到 cloudfunctions/userManager/index.js 的 adminOpenids 里。</view>
+  </view>
+
+  <view wx:if="{{!isAdmin}}" class="empty-wrap card">
+    <view class="empty-title">当前账号还不是管理员</view>
+    <view class="empty-desc">请把自己的 openid 加入 cloudfunctions/userManager/index.js 的 adminOpenids 后重新部署云函数。</view>
+  </view>
+
+  <view wx:elif="{{list.length}}" class="request-list">
+    <view wx:for="{{list}}" wx:key="_id" class="card request-card">
+      <view class="request-top">
+        <view class="request-name">{{item.realName}}</view>
+        <view class="status-badge status-sold">{{item.status === 'pending' ? '待审核' : item.status}}</view>
+      </view>
+      <view class="request-line">学号：{{item.studentNo}}</view>
+      <view class="request-line">学院：{{item.college}}</view>
+      <view wx:if="{{item.major}}" class="request-line">专业：{{item.major}}</view>
+      <view wx:if="{{item.remark}}" class="request-line">备注：{{item.remark}}</view>
+      <image wx:if="{{item.cardImage}}" class="card-image" src="{{item.cardImage}}" mode="aspectFill" data-src="{{item.cardImage}}" bindtap="previewCardImage" />
+      <view class="request-actions">
+        <button class="ghost-btn action-btn" data-id="{{item._id}}" data-status="approved" bindtap="review">通过</button>
+        <button class="danger-btn action-btn" data-id="{{item._id}}" data-status="rejected" bindtap="review">驳回</button>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="empty-wrap card">
+    <view class="empty-title">当前没有待审核申请</view>
+    <view class="empty-desc">等有新同学提交学校认证后，这里会自动展示。</view>
+  </view>
+</view>

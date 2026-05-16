@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/publish/publish",
+    "pages/profile/profile",
+    "pages/message/message",
+    "pages/login/login",
+    "pages/detail/detail",
+    "pages/chat/chat",
+    "pages/my-products/my-products",
+    "pages/school-verify/school-verify",
+    "pages/toolbox/toolbox",
+    "pages/seller/seller",
+    "pages/admin-review/admin-review"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundColor": "#f7fbf3",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "custom": true,
+    "color": "#90a08b",
+    "selectedColor": "#4f6d49",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/tabbar/home.png",
+        "selectedIconPath": "images/tabbar/home-active.png"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "发布",
+        "iconPath": "images/tabbar/publish.png",
+        "selectedIconPath": "images/tabbar/publish-active.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "私信",
+        "iconPath": "images/tabbar/message.png",
+        "selectedIconPath": "images/tabbar/message-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "images/tabbar/profile.png",
+        "selectedIconPath": "images/tabbar/profile-active.png"
+      }
+    ]
+  }
+}

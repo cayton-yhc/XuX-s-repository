@@ -1,0 +1,40 @@
+<view class="container login-page">
+  <view class="simple-topbar">
+    <view class="back-chip" bindtap="goBack">‹ 返回</view>
+  </view>
+
+  <view class="card login-card">
+    <view class="section-title">登录与资料</view>
+    <view class="section-subtitle">填写昵称并保存后即完成登录；之后可发布闲置、私信沟通和管理个人资料。</view>
+
+    <view class="avatar-block">
+      <button class="avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+        <image class="profile-avatar" src="{{profile.avatarUrl || defaultAvatar}}" mode="aspectFill" />
+      </button>
+      <view class="avatar-tip">点击头像可更换</view>
+    </view>
+
+    <view class="field-block">
+      <view class="field-label">昵称</view>
+      <input class="input-box" type="nickname" placeholder="点击输入框，可快捷填写微信昵称" placeholder-class="input-placeholder" value="{{profile.nickName}}" bindinput="onNickNameInput" bindblur="onNickNameBlur" />
+    </view>
+
+    <view class="field-block">
+      <view class="field-label">个性签名</view>
+      <textarea class="textarea-box short-textarea" placeholder="例如：认真卖闲置，也认真热爱校园生活" placeholder-class="input-placeholder" value="{{profile.signature}}" maxlength="60" bindinput="onSignatureInput" />
+    </view>
+
+    <view class="field-block">
+      <view class="field-label">联系微信号</view>
+      <input class="input-box" placeholder="手动填写，聊天页可直接复制" placeholder-class="input-placeholder" value="{{profile.wechatNumber}}" bindinput="onWechatInput" />
+      <view class="field-tip">小程序无法直接读取用户微信号，所以这里保留手动填写方式。</view>
+    </view>
+
+    <button class="primary-btn save-btn" loading="{{saving}}" bindtap="saveProfile">保存并登录</button>
+
+    <view class="dev-box" bindtap="copyOpenid">
+      <view class="muted">当前 openid（开发调试用，点击可复制）</view>
+      <view class="openid-text line-1">{{openid || '暂未获取'}}</view>
+    </view>
+  </view>
+</view>

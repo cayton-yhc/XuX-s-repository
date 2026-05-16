@@ -1,0 +1,120 @@
+.detail-page {
+  min-height: 100vh;
+  background: radial-gradient(circle at 88% 8%, rgba(248, 223, 161, 0.22) 0%, transparent 28%),
+    linear-gradient(180deg, #fffef6 0%, #f4faef 100%);
+}
+
+.detail-topbar {
+  padding: calc(env(safe-area-inset-top) + 70rpx) 24rpx 18rpx;
+}
+
+.banner {
+  width: 100%;
+  height: 540rpx;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  background: #eef3e8;
+}
+
+.detail-container {
+  padding-top: 22rpx;
+}
+
+.info-card,
+.desc-card,
+.seller-card {
+  margin-top: 20rpx;
+  padding: 28rpx;
+  border: 2rpx solid rgba(229, 239, 218, 0.88);
+}
+
+.title-row {
+  display: flex;
+  gap: 20rpx;
+}
+
+.detail-title {
+  flex: 1;
+  font-size: 38rpx;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #2f4030;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 18rpx;
+}
+
+.mini-tag {
+  padding: 10rpx 16rpx;
+  border-radius: 999rpx;
+  background: #fdf2ce;
+  color: #8b6b1f;
+  font-size: 22rpx;
+  margin-right: 12rpx;
+  margin-bottom: 10rpx;
+}
+
+.mini-tag.soft {
+  background: #eff7ea;
+  color: #62825d;
+}
+
+.detail-meta {
+  margin-top: 12rpx;
+  line-height: 1.7;
+  color: #72816d;
+}
+
+.desc-text {
+  margin-top: 18rpx;
+  line-height: 1.9;
+  color: #455346;
+}
+
+.seller-row {
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.seller-avatar {
+  width: 88rpx;
+  height: 88rpx;
+}
+
+.seller-main {
+  flex: 1;
+  margin-left: 18rpx;
+}
+
+.seller-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #31422f;
+}
+
+.contact-btn {
+  margin-top: 26rpx;
+  margin-bottom: 30rpx;
+}
+
+.disabled-contact {
+  background: #eef1ea;
+  color: #889282;
+}
+
+.seller-row {
+  align-items: center;
+}
+
+.seller-arrow {
+  margin-left: 16rpx;
+  color: #97a58d;
+  font-size: 36rpx;
+}

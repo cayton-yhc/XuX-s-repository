@@ -1,0 +1,77 @@
+.login-page {
+  padding-top: calc(env(safe-area-inset-top) + 26rpx);
+}
+
+.login-card {
+  padding: 30rpx;
+}
+
+.init-btn {
+  margin-top: 24rpx;
+}
+
+.avatar-block {
+  margin-top: 28rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-btn {
+  width: 156rpx;
+  height: 156rpx;
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.profile-avatar {
+  width: 156rpx;
+  height: 156rpx;
+  border-radius: 50%;
+  background: #eef3e8;
+}
+
+.avatar-tip {
+  margin-top: 14rpx;
+  color: #7b8775;
+  font-size: 24rpx;
+}
+
+.field-block {
+  margin-top: 28rpx;
+}
+
+.field-label {
+  margin-bottom: 12rpx;
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #314530;
+}
+
+.short-textarea {
+  min-height: 180rpx;
+}
+
+.field-tip {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  line-height: 1.7;
+  color: #7b8775;
+}
+
+.save-btn {
+  margin-top: 34rpx;
+}
+
+.dev-box {
+  margin-top: 24rpx;
+  padding: 22rpx 24rpx;
+  border-radius: 24rpx;
+  background: #fafcf7;
+}
+
+.openid-text {
+  margin-top: 8rpx;
+  color: #5c6d59;
+}
